@@ -1,0 +1,17 @@
+// define   - Global heading, paragraph, and text styles.
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Arial";
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+p {
+  line-height: 1.5;
+  margin-bottom: 8px;
+}

@@ -1,0 +1,5 @@
+// SCSS functions (e.g., color manipulation).
+
+@function px-to-rem($px) {
+  @return $px / 16 * 1rem;
+}

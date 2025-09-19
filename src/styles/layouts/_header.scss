@@ -1,0 +1,9 @@
+// Defines **structural components** (header, footer, sidebar, grid system).
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-unit;
+  background: $primary-color;
+  color: #fff;
+}

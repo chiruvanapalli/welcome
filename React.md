@@ -1,0 +1,484 @@
+## 1. What is CDN and why do we use it? // ==========================
+
+**CDN = Content Delivery Network**  
+A globally distributed network of servers that deliver web content (images, CSS, JS, videos, pages) faster and more reliably.
+
+### Why we use a CDN
+
+- ⚡ **Performance** → Content loads from the nearest server to the user (low latency).
+- 📉 **Reduced Server Load** → Static files cached on CDN servers.
+- 📈 **Scalability** → Handles sudden spikes in traffic.
+- 🔁 **Reliability** → If one server fails, another takes over.
+- 🔒 **Security** → Provides DDoS protection, firewalls, SSL/TLS.
+- 🔍 **SEO Benefit** → Faster websites rank better.
+
+**Example:**
+
+- Without CDN → User in India loads files from New York server → slow.
+- With CDN → User in India loads files from Mumbai CDN server → fast.
+
+## 2. What is `crossorigin`? // ========================================
+
+The **`crossorigin` attribute** (used in `<script>`, `<img>`, `<link>`, etc.) tells the browser how to handle cross-origin requests (resources from another domain).
+
+### Values
+
+- **`anonymous`** → Default, no credentials (cookies/auth). Best for public CDNs.
+- **`use-credentials`** → Sends cookies/auth headers. Server must allow with `Access-Control-Allow-Credentials: true`.
+- **Omitted** → Some cross-origin features (like error reporting) may not work.
+
+## 3. What is Git & GitHub? // ===========================================
+
+### Git
+
+- A **distributed version control system (VCS)**.
+- Tracks code changes, manages branches, and supports collaboration.
+
+**How it works**
+
+1. Make changes in local code.
+2. Commit changes → snapshot saved.
+3. Go back to old versions anytime.
+4. Merge changes with teammates.
+
+👉 **Analogy:** Git = the **engine** of version control.
+
+---
+
+### GitHub
+
+- A **cloud platform to host Git repositories**.
+- Makes sharing & collaboration easier.
+
+**Features**
+
+- Store code online.
+- Pull requests & code reviews.
+- Track issues & bugs.
+- Integrates with CI/CD automation.
+
+👉 **Analogy:** GitHub = the **road network & garage** where everyone shares code.
+
+## 4. What is package.json? // ==========================================
+
+The heart of a Node.js project.
+
+Defines project info, dependencies, and scripts.
+
+Why we use it
+
+Stores metadata (name, version, author).
+
+Manages dependencies (e.g., React, Express).
+
+Defines scripts (start, build, test).
+
+Keeps dependency versions consistent.
+
+### Why we use it
+
+- 📦 **Dependencies** → Lists all libraries the project needs (React, Express, etc.).
+- ⚙️ **Scripts** → Define commands like `start`, `build`, `test`.
+- 📝 **Metadata** → Stores project info (name, version, license, author).
+- 🔒 **Consistency** → Ensures everyone working on the project uses the same dependency versions.
+
+## 6. What is Webpack, Parcel, and Vite? // ===================================
+
+### Webpack
+
+- **What it is** → A popular and powerful **module bundler** for JavaScript applications.
+- **How it works** → Takes all your files (JS, CSS, images, etc.) and bundles them into a single optimized file (or smaller chunks).
+- **Features**
+  - Loaders (handle CSS, images, TypeScript, etc.).
+  - Plugins (optimize, compress, or transform files).
+  - Code splitting (load only what’s needed).
+- **Downside** → Complex configuration, slower builds for large apps.
+
+## 7. Difference between Tilde (~) and Caret (^) in `package.json` // =======================
+
+When defining dependencies in `package.json`, you often see version numbers starting with `~` or `^`.  
+These symbols control **which versions of a package npm can install** when running `npm install`.
+
+---
+
+### 1. **Caret (^)**
+
+- Example:
+  ```json
+  "express": "^4.18.2"
+    "express": "^4.18.2"
+  Meaning → Allows updates that do not change the first non-zero digit.
+  ```
+
+In this case:
+
+Acceptable versions: 4.18.3, 4.19.0, 4.20.0, etc.
+
+Not allowed: 5.x.x (major upgrade).
+
+👉 Good for getting bug fixes + new features without breaking changes.
+👉 Default behavior for most npm installs.
+
+2. Tilde (~)
+
+Example:
+
+"express": "~4.18.2"
+
+Meaning → Allows updates only to the patch version.
+
+In this case:
+
+Acceptable versions: 4.18.3, 4.18.4, etc.
+
+Not allowed: 4.19.0 (minor upgrade).
+
+👉 Good when you want more stability, only bug fixes allowed.
+
+3. Quick Summary
+   Symbol Example Allows updates Blocks updates
+   ^ ^4.18.2 Minor + patch Major (5.x.x)
+   ~ ~4.18.2 Patch only Minor + Major
+
+4. No Symbol
+
+Example:
+
+"express": "4.18.2"
+
+Always installs exactly version 4.18.2.
+
+No updates allowed.
+
+## 8. Difference between `package.json` and `package-lock.json` // ==========================
+
+Both files are used by **npm** in Node.js projects, but they serve different purposes.
+
+2. package-lock.json
+
+Automatically generated by npm when you install dependencies.
+
+Records the exact versions of every installed package (including sub-dependencies).
+
+Ensures that everyone on the team installs the same versions, avoiding “works on my machine” issues.
+
+You should never manually edit this file.
+
+---
+
+In short:
+
+package.json = declares what you want.
+
+package-lock.json = locks down what you actually get.
+
+### 1. **package.json**
+
+- The **main configuration file** for a Node.js project.
+- Contains project metadata and dependency definitions.
+- Developers **manually edit** this file.
+
+## 9. Should we push `package-lock.json` to GitHub? // ==========================
+
+Yes ✅, you **should push `package-lock.json`** to your repo.
+
+---
+
+### Why?
+
+1. **Consistency across environments**
+
+   - Ensures every developer and CI/CD pipeline installs the **exact same versions** of dependencies.
+   - Prevents “works on my machine” issues.
+
+2. **Security**
+
+   - Contains the integrity hash (`integrity`) of each package.
+   - Verifies that the dependency hasn’t been tampered with.
+
+3. **Faster installs**
+
+   - npm can use the lock file to quickly resolve dependency trees instead of recalculating.
+
+4. **Best Practice**
+   - Both npm and yarn recommend committing lock files for apps.
+
+---
+
+### Example Workflow
+
+- Run:
+
+  ```bash
+  npm install
+  ```
+
+## 10. If I push `package-lock.json`, what will other developers do? // =======================
+
+When you push `package-lock.json` to the repo, other developers will also use it.  
+Here’s what happens:
+
+---
+
+### 1. Cloning the repo
+
+- Another developer clones your project:
+  ```bash
+  git clone <repo-url>
+  cd project-folder
+  ```
+
+### Parcel
+
+- **What it is** → A **zero-configuration bundler** (works out of the box).
+- **How it works** → Detects what you need and sets up things automatically.
+- **Features**
+  - Fast builds with caching.
+  - No config required (good for beginners).
+  - Supports hot module replacement (HMR).
+- **Use case** → Great for small to medium projects or quick prototypes.
+
+---
+
+### Vite
+
+- **What it is** → A **next-generation frontend build tool**.
+- **How it works** →
+  - Uses **native ES modules** in development (no bundling → super fast).
+  - Uses **Rollup** internally for production builds.
+- **Features**
+  - Lightning-fast dev server.
+  - HMR (Hot Module Replacement) out of the box.
+  - Minimal config, modern framework support (Vue, React, Svelte).
+- **Use case** → Ideal for modern apps where fast dev experience is critical.
+
+---
+
+### Quick Comparison
+
+| Tool    | Key Feature                           | Best For                          |
+| ------- | ------------------------------------- | --------------------------------- |
+| Webpack | Highly configurable, plugins/loaders  | Large, complex apps               |
+| Parcel  | Zero config, simple & fast            | Small/medium projects, quick POCs |
+| Vite    | Super fast dev server, modern tooling | Modern apps (React, Vue, Svelte)  |
+
+# parcel
+
+- Dev build - it dev build for you
+- Local Server - it creates a local server, it hosts your app to the server
+- HMR - Hot Module Replacement - it will reflect your changes immeadietely
+- File Watching Algorithm - writter in c++
+- Catching Faster Builds
+- Image Optimization - it will do optization
+- Minification - it will minify files
+- Bundling - it will build
+- Compress - it will compress all files
+- consistent Hashing
+- code spliting
+- Differential Bundling - supports older browsers
+- Dignositic
+- Error Handling
+- https
+- Tree Shaking - will remove your unused code
+
+# remove main from package.json otherwise parcel will give error
+
+# what is JSX? // ================================
+
+JSX is stands for Javascript with xml. jsx makes us developer light.
+JSX is not html its html like syntax.
+JSX is a developer friendly.
+React Element is not a friendly.
+JSX transpiled before reaches to the js engine which will browser understand.
+JSX is transpiled by Babel finally.
+JSX will sanitize your data and do that, it will prevent malicious things and execute it properly, its a powerful.
+
+## 11. What is Babel and why do we use it?
+
+**Babel** is a JavaScript compiler (or transpiler).  
+It allows developers to write modern JavaScript (ES6/ES7/ESNext) and still run it on older browsers or environments that don’t support the latest features.
+
+---
+
+### 🔹 Why we use Babel // ================================
+
+1. **Backward Compatibility**
+
+   - Many browsers (especially older ones) don’t support the latest JavaScript features.
+   - Babel converts modern code → into older JavaScript (ES5) that all browsers understand.
+
+2. **Use Latest Features Today**
+
+   - You can use `async/await`, arrow functions, classes, optional chaining (`?.`), etc.
+   - Babel makes sure your code still runs everywhere.
+
+3. **JSX & React**
+
+   - Babel converts **JSX** (used in React: `<h1>Hello</h1>`) into standard JavaScript (`React.createElement`).
+
+4. **Polyfills**
+   - Babel can also add polyfills (like `Promise`, `Object.assign`, etc.) so that missing features are simulated in older browsers.
+
+---
+
+### 🔹 Example
+
+**Modern JavaScript (ES6):**
+
+```js
+const greet = (name) => {
+  console.log(`Hello, ${name}!`);
+};
+```
+
+## 12. What is Cross-Site Scripting (XSS)? // ===========================
+
+**Cross-Site Scripting (XSS)** is a type of security vulnerability found in web applications.  
+It happens when attackers inject malicious JavaScript into a trusted website, and that script runs in the browser of other users.
+
+---
+
+### 🔹 How it works
+
+1. A website displays user input without properly sanitizing it.
+2. An attacker submits a `<script>` tag or malicious code.
+3. Other users load the page → the injected script executes in their browser.
+4. The attacker can then steal cookies, session tokens, or sensitive data.
+
+---
+
+### 🔹 Example
+
+**Vulnerable code (unsanitized input):**
+
+```html
+<p>
+  Welcome,
+  <?php echo $_GET["name"]; ?>
+</p>
+
+🔹 Types of XSS Stored XSS Malicious code is permanently stored on the server
+(e.g., in a database, comment field). Every user visiting the page gets
+attacked. Reflected XSS Malicious code comes from the URL/query string. Affects
+only the user who clicks the crafted link. DOM-based XSS The vulnerability
+exists in client-side JavaScript (manipulating document.innerHTML, etc.). 🔹
+Prevention Escape output → never directly render raw user input as HTML. Use
+sanitization libraries (e.g., DOMPurify). Use frameworks safely → React, Angular
+automatically escape data by default. Enable Content Security Policy (CSP).
+```
+
+## 14. What is Config-Driven UI? // ========================
+
+**Config-Driven UI** means building your application’s UI dynamically based on configuration files (usually JSON, or sometimes YAML).  
+Instead of hardcoding layouts and components, you define them in a config, and your app renders the UI according to that config.
+
+---
+
+### 🔹 Why use Config-Driven UI?
+
+1. **Flexibility**
+
+   - Change UI without changing code.
+   - Just update the config file.
+
+2. **Faster Customization**
+
+   - Useful for dashboards, forms, admin panels where structure changes often.
+   - Example: adding a new field in a form → just update JSON config, no need to redeploy code.
+
+3. **Scalability**
+
+   - Large apps with multiple modules can share a common rendering engine, with configs driving each screen.
+
+4. **Non-developer friendly**
+   - Business teams can tweak configs instead of asking devs for UI changes.
+
+---
+
+### 🔹 Example
+
+**Config (formConfig.json):**
+
+```json
+{
+  "title": "User Registration",
+  "fields": [
+    { "label": "Name", "type": "text", "required": true },
+    { "label": "Email", "type": "email", "required": true },
+    { "label": "Password", "type": "password", "required": true },
+    { "label": "Subscribe", "type": "checkbox" }
+  ]
+}
+```
+
+## what is useQuery
+
+useQuery is a React hook provided by libraries like React Query (TanStack Query) that helps you fetch, cache, synchronize, and update data in React applications.
+
+useQuery is only designed for fetching and catching data.
+
+Instead of manually managing useState + useEffect + API calls, useQuery abstracts all of that and gives you:
+
+Automatic caching
+Background refetching
+Loading and error states
+Data synchronization between components
+
+Key Concepts :
+
+Query Key -
+Unique identifier for the query.
+Example: ['users'] or ['user', userId].
+Helps React Query know if data is already cached.
+
+queryFn -
+The function that fetches the data.
+Usually an axios or fetch call.
+
+Returned values -
+data: The fetched data.
+isLoading: Boolean when fetching for the first time.
+isError: Boolean if the query failed.
+error: The error object.
+isFetching: True whenever a refetch is happening in the background.
+
+## what is useMutation? ========================= //
+
+For POST / PUT / DELETE (anything that modifies data), you use useMutation in React Query.
+It’s built specifically for writing data and handling the follow-up (like refetching or updating the cache).
+
+useMutation does not run automatically (unlike useQuery).
+You call mutation.mutate(payload) when you want to trigger the request.
+Use onSuccess to refresh or update cached data (invalidateQueries).
+You get isPending, isSuccess, isError, and data states for free.
+
+## 15. What is a Webhook and its Usage? =========================== //
+
+**Webhook** = A way for one system (server A) to send real-time data to another system (server B) when an event happens.  
+Instead of constantly asking (polling) if something has changed, server A automatically **pushes** data to server B via an HTTP request.
+
+---
+
+### 🔹 How it works
+
+1. You (the consumer) give your **endpoint URL** (like `https://myapp.com/webhook`) to a service.
+2. When an event occurs (e.g., payment success, new signup), that service sends an **HTTP POST** request with event data to your endpoint.
+3. Your app processes the incoming data and takes action.
+
+---
+
+### 🔹 Example
+
+**Use Case: Payment Gateway**
+
+- You integrate Stripe or Razorpay in your app.
+- A user makes a payment.
+- Stripe sends a `POST` request to your webhook URL:
+  ```json
+  {
+    "event": "payment_success",
+    "amount": 1000,
+    "currency": "INR",
+    "user_id": 123
+  }
+  ```

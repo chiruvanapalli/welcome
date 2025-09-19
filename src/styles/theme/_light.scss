@@ -1,0 +1,18 @@
+// theme specific styles
+// these variables will apply from the root level if you use these variables it will overried
+/*
+3. What happens when you toggle?
+
+By default, the :root variables (light theme) are applied.
+
+When you click the toggle button, React adds class="dark" to <body>.
+
+Now body.dark { --bg-color: ... } overrides the :root values.
+
+Any component that uses var(--bg-color) or var(--button-bg) will instantly update.
+*/
+
+body.dark {
+  $sidebar: #000;
+  $header: var(--header-bg);
+}

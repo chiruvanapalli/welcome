@@ -1,0 +1,16 @@
+// define colors, backgrounds, fonts and spacing
+/* 
+Variables in _variables.scss
+
+These are SCSS variables like $spacing, $font-stack, $border-radius.
+
+They do not exist in the browser.
+
+They are compiled into fixed values during the build process.
+
+So once your app is running, you cannot change them dynamically.
+*/
+$primary-color: #0070f3;
+$secondary-color: #ff4081;
+$font-family: "Inter", sans-serif;
+$spacing-unit: 1rem;
