@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { fetchProductsById } from "./store/slice/productSlice";
 import { AppDispatch } from "./store/store";
 import "./assets/styles/main.scss";
-import restObj from "./dummy-files/restObject.json";
 import AppRoutes from "./routes/AppRoutes";
+import MockData from "./mock-files/MockData";
 
 const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,7 +13,7 @@ const App = () => {
     dispatch(fetchProductsById(1));
   }, [dispatch]);
 
-  console.log(restObj);
+  console.log(MockData);
 
   return <AppRoutes />;
 };
