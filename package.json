@@ -22,11 +22,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
+  "start": "parcel index.html",
+  "build": "parcel build index.html",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist"
+},
+
   "eslintConfig": {
     "extends": [
       "react-app",

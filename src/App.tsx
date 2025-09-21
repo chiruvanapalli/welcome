@@ -22,13 +22,14 @@ const App = () => {
 
   return (
     <div>
-      <button onClick={toggleTheme} style={styleCard}>
+      {/* <button onClick={toggleTheme} style={styleCard}>
         Switch to {theme === "light" ? "Dark" : "Light"} Mode
       </button>
 
       {isLoading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {items && <div>title</div>}
+      {items && <div>title</div>} */}
+      Hello
     </div>
   );
 };
