@@ -17,17 +17,18 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-redux": "^9.2.0",
+    "react-router": "^6.14.2",
+    "react-router-dom": "6.11",
     "react-scripts": "5.0.1",
-    "typescript": "^5.9.2",
+    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "parcel index.html",
-  "build": "parcel build index.html",
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist"
-},
-
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",

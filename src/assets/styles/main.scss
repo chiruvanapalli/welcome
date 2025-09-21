@@ -1,20 +1,5 @@
 // This is the root SCSS file that imports everything.
 // It’s the file you actually include in your app.
-// Base
-// @import "./base/reset";
-// @import "./base/typography";
-// @import "./base/global";
-
-// // Utils
-// @import "./utils/variables";
-// @import "./utils/mixins";
-
-// // Themes (default load light, switch dynamically in React)
-// @import "./theme/light";
-
-// // Components & Layouts
-// @import "./components/buttons";
-// @import "./layouts/header";
 
 @use "./base/global";
 @use "./utils/mixins";
@@ -38,8 +23,14 @@
   box-sizing: border-box;
 }
 
-// Usage
 body {
   background: var(--background-color);
   color: var(--text-color);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
 }
