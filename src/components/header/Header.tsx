@@ -6,7 +6,7 @@ const Header = () => {
     <header className="header">
       <div className="header__container">
         {/* Logo */}
-        <h1 className="header__logo">MyShop</h1>
+        <h1 className="header__logo">eShop</h1>
 
         {/* Navigation */}
         <nav className="header__nav">
@@ -25,7 +25,9 @@ const Header = () => {
         </nav>
 
         {/* Cart */}
-        <div className="header__cart">Cart Items : 0 items</div>
+        <div className="header__cart">
+          Cart : <strong>0 items</strong>
+        </div>
       </div>
     </header>
   );
