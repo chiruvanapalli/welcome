@@ -43,3 +43,9 @@ body {
   background: var(--background-color);
   color: var(--text-color);
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

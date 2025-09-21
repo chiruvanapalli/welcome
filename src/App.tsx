@@ -1,37 +1,21 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProductsById } from "./features/productSlice";
-import { RootState, AppDispatch } from "./store/store";
-import UseTheme from "./components/UseTheme";
+import { useDispatch } from "react-redux";
+import { fetchProductsById } from "./store/slice/productSlice";
+import { AppDispatch } from "./store/store";
+import "./assets/styles/main.scss";
+import restObj from "./dummy-files/restObject.json";
+import AppRoutes from "./routes/AppRoutes";
 
 const App = () => {
-  const { theme, toggleTheme }: any = UseTheme();
   const dispatch = useDispatch<AppDispatch>();
-
-  const { items, isLoading, error } = useSelector(
-    (state: RootState) => state.products
-  );
-
-  const styleCard = {
-    backgroundColor: "red",
-  };
 
   useEffect(() => {
     dispatch(fetchProductsById(1));
   }, [dispatch]);
 
-  return (
-    <div>
-      {/* <button onClick={toggleTheme} style={styleCard}>
-        Switch to {theme === "light" ? "Dark" : "Light"} Mode
-      </button>
+  console.log(restObj);
 
-      {isLoading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {items && <div>title</div>} */}
-      Hello
-    </div>
-  );
+  return <AppRoutes />;
 };
 
 export default App;
