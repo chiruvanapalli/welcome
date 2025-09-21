@@ -21257,6 +21257,7 @@ var _shop = require("../pages/shop/Shop");
 var _shopDefault = parcelHelpers.interopDefault(_shop);
 const AppRoutes = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.BrowserRouter), {
+        basename: "/welcome",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
             children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                 path: "/",
