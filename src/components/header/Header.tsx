@@ -1,34 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Sidebar from "../sidebar/Sidebar";
+import { CaretDown } from "phosphor-react";
+import LOGO from "../../assets/images/logo.png?url";
 import "./Header.scss";
 
 const Header = () => {
+  const [isOpenSidebar, setIsOpenSidebar] = useState<boolean>(false);
+
+  const handleShowSidebar = () => {
+    setIsOpenSidebar(true);
+  };
+
   return (
     <header className="header">
       <div className="header__container">
-        {/* Logo */}
-        <h1 className="header__logo">eShop</h1>
+        <div className="header__left">
+          {/* Logo */}
+          <img src={LOGO} alt="Serve for you" />
 
-        {/* Navigation */}
-        <nav className="header__nav">
-          <a href="/" className="header__link">
-            Home
-          </a>
-          <a href="/shop" className="header__link">
-            Shop
-          </a>
-          <a href="/about" className="header__link">
-            About
-          </a>
-          <a href="/contact" className="header__link">
-            Contact
-          </a>
-        </nav>
+          {/* Navigation */}
+          <nav className="header__nav">
+            <Link to="/" className="header__link">
+              Home
+            </Link>
+            <Link to="/shop" className="header__link">
+              Shop
+            </Link>
+            <Link to="/about" className="header__link">
+              About
+            </Link>
+            <Link to="/contact" className="header__link">
+              Contact
+            </Link>
+          </nav>
+        </div>
 
         {/* Cart */}
-        <div className="header__cart">
-          Cart : <strong>0 items</strong>
+        <div className="header__right">
+          <div className="header__right__dropdown" onClick={handleShowSidebar}>
+            Select Location
+            <button>
+              <CaretDown size={22} />
+            </button>
+          </div>
+          <div className="header__right__cart">
+            Cart : <strong>0 items</strong>
+          </div>
         </div>
       </div>
+
+      <Sidebar
+        isVisible={isOpenSidebar}
+        setIsVisible={() => setIsOpenSidebar(false)}
+      />
     </header>
   );
 };
