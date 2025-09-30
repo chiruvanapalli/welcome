@@ -30,3 +30,5 @@
     Ans :
 16. What is Microservice?
     Ans : is an approach to building applications as a collection of **small, independent services** that communicate with each other (usually over APIs like REST or gRPC). calling number of services they can talk each other.
+17. what is optional chaining?
+    Ans:
