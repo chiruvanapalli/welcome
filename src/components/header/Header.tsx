@@ -17,7 +17,7 @@ const Header = () => {
       <div className="header__container">
         <div className="header__left">
           {/* Logo */}
-          <img src={(Logo as any).default} alt="Serve for you" />
+          <img src={Logo} alt="Serve for you" />
 
           {/* Navigation */}
           <nav className="header__nav">
