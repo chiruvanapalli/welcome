@@ -21,8 +21,13 @@ const Shop = () => {
   });
 
   return (
-    <>
+    <div className="shop">
       <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      {searchTerm.length > 0 && (
+        <h2 className="product_count">
+          <b>{filteredData.length} Products</b> are matching with keyword
+        </h2>
+      )}
       <div className="restaurant_shop">
         {filteredData.map((productItem: any, index: number) => {
           const info = productItem?.card?.card?.info;
@@ -38,8 +43,13 @@ const Shop = () => {
           );
         })}
       </div>
-      {filteredData.length === 0 && <NoResultsFound searchTerm={searchTerm} />}
-    </>
+      {filteredData.length === 0 && (
+        <NoResultsFound
+          filteredDataLength={filteredData.length}
+          searchTerm={searchTerm}
+        />
+      )}
+    </div>
   );
 };
 

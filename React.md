@@ -482,3 +482,63 @@ Instead of constantly asking (polling) if something has changed, server A automa
     "user_id": 123
   }
   ```
+
+## 16. React uses Reconsilation Algorithim, known as React Fiber
+
+## 17. what is monolith
+
+**Monolith** (or Monolithic Architecture) is a traditional way of building applications where the **entire app is built as a single, unified unit**.
+
+---
+
+### 🔹 Characteristics
+
+- All features (UI, business logic, database access, APIs) are bundled together.
+- Single codebase → one deployable artifact (like `.war`, `.jar`, or single Node.js server).
+- Everything runs in the same process.
+
+---
+
+### 🔹 Example
+
+Imagine an **e-commerce app** built as a monolith:
+
+- Product catalog
+- User authentication
+- Cart & checkout
+- Payment service
+- Admin dashboard
+
+👉 All these live inside **one codebase** and are deployed together.
+
+---
+
+### 🔹 Advantages
+
+1. **Simple to build & deploy** → only one application to manage.
+2. **Easy debugging** → logs and errors are in one place.
+3. **Good for small teams** → less complexity in architecture.
+4. **Performance** → no network calls between services (everything runs in one process).
+
+---
+
+### 🔹 Disadvantages
+
+1. **Hard to scale** → you can’t scale just one part (e.g., checkout); you must scale the whole app.
+2. **Tight coupling** → one small change requires redeploying the whole app.
+3. **Slower development** as team size grows → harder to manage one big codebase.
+4. **Technology lock-in** → all modules must use the same language/framework.
+5. **Fault isolation** → one bug/crash can bring down the whole system.
+
+---
+
+### 🔹 Monolith vs Microservices
+
+- **Monolith** = one big app (all modules in one place).
+- **Microservices** = app is split into independent services (auth, payment, cart, etc.) that communicate via APIs.
+
+---
+
+👉 **In short:**  
+A **Monolith** = everything in one codebase, one deploy, one unit.  
+Great for small projects, but can become difficult to maintain as apps grow.

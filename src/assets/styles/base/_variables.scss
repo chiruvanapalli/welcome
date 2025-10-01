@@ -10,6 +10,29 @@ They are compiled into fixed values during the build process.
 
 So once your app is running, you cannot change them dynamically.
 */
+
+// @use "sass:map";
+// @use "sass:list";
+
+// $var: (
+//   "--_body-bg": (
+//     dark: #000,
+//     light: white,
+//   ),
+// );
+
+// $clsList: ("dark", "light");
+
+// html {
+//   @each $theme in $clsList {
+//     body.#{$theme} {
+//       @each $cssVar, $values in $var {
+//         #{$cssVar}: map.get($values, $theme);
+//       }
+//     }
+//   }
+// }
+
 $primary-color: #0070f3;
 $secondary-color: #ff4081;
 $font-family: "Inter", sans-serif;
