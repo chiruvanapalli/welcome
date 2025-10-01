@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // <-- import Link
+import Logo from "../../assets/images/logo-3.png";
 import Sidebar from "../sidebar/Sidebar";
 import { CaretDown } from "phosphor-react";
-import Logo from "../../assets/images/logo.png";
 import "./Header.scss";
 
 const Header = () => {
@@ -17,7 +17,7 @@ const Header = () => {
       <div className="header__container">
         <div className="header__left">
           {/* Logo */}
-          <img src={Logo} alt="Serve for you" />
+          <img src={Logo} alt="hi" />
 
           {/* Navigation */}
           <nav className="header__nav">

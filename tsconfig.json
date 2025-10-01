@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "target": "ES6",
-    "module": "ESNext",
-    "jsx": "react-jsx",
-    "moduleResolution": "node",
+    "target": "ES6",                       // modern JS
+    "module": "ESNext",                     // module system
+    "moduleResolution": "Node",
+    "jsx": "react-jsx",                     // React 18+ JSX transform
+    "strict": true,                         // strict TS checks
     "esModuleInterop": true,
-    "strict": true,
-    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist"
+    "skipLibCheck": true,
+    "noEmitOnError": true,                  // stops output if errors exist
+    "outDir": "./dist"                       // optional
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
